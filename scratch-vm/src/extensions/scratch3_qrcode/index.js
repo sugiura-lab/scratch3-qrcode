@@ -1,4 +1,4 @@
-/* Build:2020051203 */
+/* Build:2020051301 */
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const TargetType = require('../../extension-support/target-type');
@@ -295,8 +295,12 @@ class Scratch3QRCodeBlocks {
 
     _decodeBinaryData(binaryData){
         const encode = encoding.detect(binaryData);
-        const decoder = new TextDecoder(encode);
-        return decoder.decode(Uint8Array.from(binaryData).buffer);
+        try{
+            const decoder = new TextDecoder(encode);
+            return decoder.decode(Uint8Array.from(binaryData).buffer);
+        }catch (e) {
+            return '';
+        }
     }
 
     _getGlobalVideoTransparency () {
