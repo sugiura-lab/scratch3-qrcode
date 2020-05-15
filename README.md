@@ -22,6 +22,7 @@ npm start
 Then go to http://localhost:8601/ - the playground outputs the default GUI component
 
 ## Release Notes
+* 2020.5.15 v1.3 Fix font-size of credit
 * 2020.5.14 v1.2 Add UTF-16 decoder
 * 2020.5.13 v1.1 Add error handling to TextDecoder
 * 2020.5.12 v1.0

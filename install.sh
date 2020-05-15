@@ -6,7 +6,7 @@ REPOSITORY_NAME="scratch3-qrcode"
 EXTENSION_NAME="QRコード"
 EXTENSION_ID="qrcode"
 COLLABORATOR="Sugiura Lab"
-EXTENSION_DESCRIPTION="QRコードを読み取ります。QRコードは株式会社デンソーウェーブの登録商標です。"
+EXTENSION_DESCRIPTION="QRコードを読み取ります。{credit}"
 
 cd node_modules/scratch-vm
 npm install encoding-japanese@1.0.30
@@ -31,7 +31,19 @@ DESCRIPTION="\
         collaborator: '${COLLABORATOR}',${LF}\
         iconURL: ${EXTENSION_ID}IconURL,${LF}\
         insetIconURL: ${EXTENSION_ID}InsetIconURL,${LF}\
-        description: '${EXTENSION_DESCRIPTION}',${LF}\
-        featured: true${LF}\
+        description: (${LF}\
+            <FormattedMessage${LF}\
+                defaultMessage='${EXTENSION_DESCRIPTION}'${LF}\
+                description='${EXTENSION_DESCRIPTION}'${LF}\
+                values={{${LF}\
+                    credit:<div style={{fontSize: '0.6em'}}>QRコードは株式会社デンソーウェーブの登録商標です。</div>${LF}\
+                }}${LF}\
+                id='gui.extension.${EXTENSION_ID}blocks.description'${LF}\
+            />${LF}\
+        ),${LF}\
+        featured: true,${LF}\
+        disabled: false,${LF}\
+        internetConnectionRequired: false,${LF}\
+        bluetoothRequired: false${LF}\
     },"
 sed -e "s|^export default \[$|import ${EXTENSION_ID}IconURL from './${EXTENSION_ID}/${EXTENSION_ID}.png';${LF}import ${EXTENSION_ID}InsetIconURL from './${EXTENSION_ID}/${EXTENSION_ID}-small.svg';${LF}${LF}export default [${LF}${DESCRIPTION}|g" src/lib/libraries/extensions/index.jsx_orig > src/lib/libraries/extensions/index.jsx
