@@ -1,4 +1,4 @@
-/* Build:2020051501 */
+/* Build:2020051801 */
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const TargetType = require('../../extension-support/target-type');
@@ -92,7 +92,6 @@ const Mode = {
 class Scratch3QRCodeBlocks {
     constructor (runtime) {
         this.runtime = runtime;
-        this.firstInstall = true;
         this.locale = this._getViewerLanguageCode();
         this._canvas = document.querySelector('canvas');
         this._scanning = false;
@@ -109,12 +108,9 @@ class Scratch3QRCodeBlocks {
     }
 
     getInfo () {
-        if (this.firstInstall) {
-            const stage = this.runtime.getTargetForStage();
-            if (stage) {
-                stage.videoTransparency = 0;
-            }
-            this.firstInstall = false;
+        const stage = this.runtime.getTargetForStage();
+        if (stage) {
+            stage.videoTransparency = 0;
         }
 
         this.locale = this._getViewerLanguageCode();
@@ -244,11 +240,11 @@ class Scratch3QRCodeBlocks {
 
         this._clearMark();
         if(code){
-            if(!this._isMultibyteCharacters){
-                this._data = code.data;
-            }else{
-                this._data = this._decodeBinaryData(code.binaryData);
+            const delimiter = code.binaryData.indexOf(0); //NULL index
+            if(delimiter != -1){
+                code.binaryData = code.binaryData.slice(0, delimiter);
             }
+            this._data = this._decodeBinaryData(code.binaryData);
             this._binaryData = code.binaryData;
             this._drawMark(code.location, width, height);
         }
@@ -284,13 +280,6 @@ class Scratch3QRCodeBlocks {
 
     _clearMark(){
         this.runtime.renderer.penClear(this._penSkinId);
-    }
-
-    _isMultibyteCharacters(code){
-        if(code.data.length == 0 && code.binaryData.length > 0){
-            return true;
-        }
-        return false;
     }
 
     _decodeBinaryData(binaryData){
