@@ -1,5 +1,15 @@
 # scratch3-qrcode
 
+## System Requirements
+### Desktop
+* Chrome (63+)
+* Edge (15+)
+* Firefox (57+)
+* Safari (11+)
+### Tablet
+* Mobile Chrome (63+)
+* Mobile Safari (11+)
+
 ## Installation
 This requires you to have Git and Node.js installed.
 
