@@ -19,7 +19,7 @@ git clone --depth 1 https://github.com/LLK/scratch-gui.git
 cd scratch-gui
 npm install
 
-# set up QR code extension
+# set up QR Code extension
 git clone https://github.com/sugiura-lab/scratch3-qrcode.git
 sh scratch3-qrcode/install.sh
 ```
@@ -32,6 +32,7 @@ npm start
 Then go to http://localhost:8601/ - the playground outputs the default GUI component
 
 ## Release Notes
+* 2022.3.10 v1.5 Improve English localization
 * 2020.5.18 v1.4 Fix null character issue in binary data
 * 2020.5.15 v1.3 Fix font-size of credit
 * 2020.5.14 v1.2 Add UTF-16 decoder

@@ -20,12 +20,12 @@ const Message = {
     qrCode : {
         'ja': 'QRコード',
         'ja-Hira': 'QRコード',
-        'en': 'QR code'
+        'en': 'QR Code'
     },
     qrStart : {
         'ja': '[INPUT]の読み取りを始める',
         'ja-Hira': '[INPUT]のよみとりをはじめる',
-        'en': 'Start scanning [INPUT]'
+        'en': 'start scanning [INPUT]'
     },
     qrCameraInput : {
         'ja': 'カメラ',
@@ -40,7 +40,7 @@ const Message = {
     qrStop : {
         'ja': '読み取りを止める',
         'ja-Hira': 'よみとりをとめる',
-        'en': 'Stop scanning'
+        'en': 'stop scanning'
     },
     qrScanning : {
         'ja': '読み取り中',
