@@ -1,4 +1,3 @@
-/* Build:2020051801 */
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const TargetType = require('../../extension-support/target-type');
